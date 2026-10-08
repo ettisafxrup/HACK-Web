@@ -547,7 +547,8 @@ select.input {
 .brand--light {
   color: #fff;
   --mark: #fff;
-  --mark-ink: var(--navy-900);
+  --mark-core: var(--navy-900);
+  --mark-ink: #fff;
 }
 
 .nav {
@@ -776,4 +777,14 @@ select.input {
   padding-block: var(--s-5);
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   font-size: var(--text-sm);
+}
+
+/* Maker's credit: one small line inside the footer's bottom row, no space of its own. */
+.footer__credit {
+  font-size: var(--text-xs);
+}
+
+.footer__maker {
+  font-family: var(--font-mono);
+  color: #fff;
 }

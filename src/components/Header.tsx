@@ -52,7 +52,7 @@ export function Header() {
     <header className={`header${scrolled || open ? ' is-raised' : ''}`}>
       <div className="wrap header__in">
         <Link href="/" className="brand" onClick={close} aria-label={`${club.short}, ${club.name}: home`}>
-          <Image className="brand__logo" src="/logo.png" alt="" width={383} height={286} priority />
+          <Image className="brand__logo" src="/logo.svg" alt="" width={383} height={286} priority />
           <span className="brand__text">
             <span className="brand__word">{club.short}</span>
             <span className="brand__sub">KUET</span>

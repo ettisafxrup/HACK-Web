@@ -13,8 +13,8 @@ const BURST_MS = 750
 const INTERACTIVE = 'a, button, input, select, textarea, label, summary, .member'
 
 const TONES = {
-  page: { trace: '22, 114, 196', traceAlpha: 0.1, pulse: '22, 114, 196', probe: '56, 184, 204', via: '#ffffff' },
-  hero: { trace: '154, 216, 232', traceAlpha: 0.13, pulse: '154, 216, 232', probe: '255, 255, 255', via: '#0f1b3d' },
+  page: { trace: '22, 114, 196', traceAlpha: 0.045, pulse: '22, 114, 196', probe: '56, 184, 204', via: '#ffffff' },
+  hero: { trace: '154, 216, 232', traceAlpha: 0.08, pulse: '154, 216, 232', probe: '255, 255, 255', via: '#0f1b3d' },
 }
 
 type Point = { x: number; y: number }
@@ -100,13 +100,13 @@ export function CircuitBackground({ variant = 'page' }: { variant?: 'page' | 'he
         if (trace.offset > trace.total) continue // a pause between signals
         const head = pointAt(trace, trace.offset)
         const tail = pointAt(trace, Math.max(0, trace.offset - 22))
-        ctx.strokeStyle = `rgba(${tone.pulse}, 0.34)`
+        ctx.strokeStyle = `rgba(${tone.pulse}, 0.2)`
         ctx.lineWidth = 1.5
         ctx.beginPath()
         ctx.moveTo(tail.x + 0.5, tail.y + 0.5)
         ctx.lineTo(head.x + 0.5, head.y + 0.5)
         ctx.stroke()
-        ctx.fillStyle = `rgba(${tone.pulse}, 0.6)`
+        ctx.fillStyle = `rgba(${tone.pulse}, 0.36)`
         ctx.fillRect(head.x - 1.5, head.y - 1.5, 4, 4)
       }
 
@@ -212,9 +212,9 @@ export function CircuitBackground({ variant = 'page' }: { variant?: 'page' | 'he
     const tick = (now: number) => {
       frame = requestAnimationFrame(tick)
       if (probe && probeAt.seen) {
-        // Eased every frame (not throttled) so the probe stays smooth.
-        probeAt.x += (probeAt.tx - probeAt.x) * 0.22
-        probeAt.y += (probeAt.ty - probeAt.y) * 0.22
+        // Tracked every frame (not throttled) with only a touch of easing, so it travels with the cursor.
+        probeAt.x += (probeAt.tx - probeAt.x) * 0.4
+        probeAt.y += (probeAt.ty - probeAt.y) * 0.4
         probe.style.transform = `translate3d(${probeAt.x}px, ${probeAt.y}px, 0)`
       }
       if (now - last < 32) return

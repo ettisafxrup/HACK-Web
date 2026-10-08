@@ -44,6 +44,13 @@ export function Footer() {
         <p>
           © {new Date().getFullYear()} {club.name}
         </p>
+        <p className="footer__credit">
+          Made with <span aria-label="love">🤍</span> by{' '}
+          <a className="footer__maker" href="https://github.com/ettisafxrup" target="_blank" rel="noopener noreferrer">
+            @ettisafxrup
+            <span className="sr-only"> on GitHub (opens in a new tab)</span>
+          </a>
+        </p>
         <p>Meets {club.meets}</p>
       </div>
     </footer>

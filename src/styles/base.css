@@ -451,6 +451,55 @@ main {
   inset: -9px;
 }
 
+/* The probe is alive while it travels: its brackets pulse like a clock line and a signal
+   runs laps around its outline. */
+.probe.is-on::before {
+  animation: probe-pulse 1.4s ease-in-out infinite;
+}
+
+.probe::after {
+  --r: 15px;
+  content: '';
+  position: absolute;
+  top: -2.5px;
+  left: -2.5px;
+  width: 5px;
+  height: 5px;
+  background: var(--blue-600);
+  animation: probe-orbit 1.6s linear infinite;
+}
+
+.probe.is-active::after {
+  --r: 24px;
+  animation-duration: 0.9s;
+}
+
+.probe.is-down::after {
+  --r: 9px;
+}
+
+@keyframes probe-pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@keyframes probe-orbit {
+  0%,
+  100% {
+    transform: translate(calc(var(--r) * -1), calc(var(--r) * -1));
+  }
+  25% {
+    transform: translate(var(--r), calc(var(--r) * -1));
+  }
+  50% {
+    transform: translate(var(--r), var(--r));
+  }
+  75% {
+    transform: translate(calc(var(--r) * -1), var(--r));
+  }
+}
+
 /* Mouse click: a chip outline snaps outward, a second ring follows, the core flashes
    and eight pins fly off the four sides. */
 .spark {

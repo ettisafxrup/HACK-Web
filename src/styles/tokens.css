@@ -1,5 +1,5 @@
 /* HACK design tokens.
-   Colour is sampled from hack_logo.jpg: royal blue, indigo, cyan and pale sky on white.
+   Colour is sampled from public/hack_logo.jpg: royal blue, indigo, cyan and pale sky on white.
    Everything else in the app reads from here — change a value once, it changes everywhere. */
 
 :root {

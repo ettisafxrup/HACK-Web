@@ -1,23 +1,28 @@
 import type { ReactNode } from 'react'
 import { DieArt, type Hue } from './DieArt'
 
-/** Chip-with-an-H mark, redrawn from the club logo so it stays crisp at header size. */
+/** The chip "H" from the club logo, traced as a vector. Used where the full logo is too wide.
+    Colours can be overridden through --mark, --mark-core and --mark-ink (see .brand--light). */
 export function Mark({ size = 28 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+    <svg width={size} height={size} viewBox="0 0 64 64" aria-hidden="true" focusable="false">
       <path
-        d="M11 2v4M16 2v4M21 2v4M11 26v4M16 26v4M21 26v4M2 11h4M2 16h4M2 21h4M26 11h4M26 16h4M26 21h4"
-        stroke="var(--mark, var(--blue-600))"
-        strokeWidth="2"
+        d="M17 2v8M23 2v8M29 2v8M35 2v8M41 2v8M47 2v8M17 54v8M23 54v8M29 54v8M35 54v8M41 54v8M47 54v8M2 17h8M2 23h8M2 29h8M2 35h8M2 41h8M2 47h8M54 17h8M54 23h8M54 29h8M54 35h8M54 41h8M54 47h8"
+        stroke="var(--mark, #3a4fa3)"
+        strokeWidth="2.4"
         strokeLinecap="round"
       />
-      <rect x="6" y="6" width="20" height="20" rx="3" fill="var(--mark, var(--blue-600))" />
-      <path
-        d="M12 11v10M20 11v10M12 16h8"
-        stroke="var(--mark-ink, #fff)"
-        strokeWidth="2.6"
-        strokeLinecap="round"
+      <rect x="9" y="9" width="46" height="46" rx="4" fill="var(--mark, #3a4fa3)" />
+      <rect
+        x="14.5"
+        y="14.5"
+        width="35"
+        height="35"
+        fill="var(--mark-core, #1672c4)"
+        stroke="var(--mark-ink, #cfeff6)"
+        strokeWidth="1.4"
       />
+      <path d="M25 21v22M39 21v22M25 32h14" fill="none" stroke="var(--mark-ink, #cfeff6)" strokeWidth="4" />
     </svg>
   )
 }

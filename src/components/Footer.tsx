@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { club, nav } from '@/data/club'
+import { HomeLink } from './HomeLink'
 import { Mark } from './ui'
 
 export function Footer() {
@@ -7,10 +8,10 @@ export function Footer() {
     <footer className="footer">
       <div className="wrap footer__in">
         <div className="footer__about">
-          <Link href="/" className="brand brand--light" aria-label={`${club.short}: home`}>
+          <HomeLink className="brand brand--light" label={`${club.short}: home`}>
             <Mark />
             <span className="brand__word">{club.short}</span>
-          </Link>
+          </HomeLink>
           <p>{club.name}</p>
           <p className="footer__muted">{club.tagline}</p>
         </div>

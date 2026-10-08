@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { club, nav } from '@/data/club'
+import { HomeLink } from './HomeLink'
 
 const DESKTOP = '(min-width: 1024px)'
 
@@ -51,13 +52,13 @@ export function Header() {
   return (
     <header className={`header${scrolled || open ? ' is-raised' : ''}`}>
       <div className="wrap header__in">
-        <Link href="/" className="brand" onClick={close} aria-label={`${club.short}, ${club.name}: home`}>
+        <HomeLink className="brand" onNavigate={close} label={`${club.short}, ${club.name}: home`}>
           <Image className="brand__logo" src="/logo.svg" alt="" width={383} height={286} priority />
           <span className="brand__text">
             <span className="brand__word">{club.short}</span>
             <span className="brand__sub">KUET</span>
           </span>
-        </Link>
+        </HomeLink>
 
         <nav className="nav" aria-label="Primary">
           {nav.map((item) => (
